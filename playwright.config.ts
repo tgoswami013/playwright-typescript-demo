@@ -22,30 +22,59 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  // globalSetup: require.resolve('./auth.setup'),
+
   use: {
+    
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'https://www.programsbuzz.com',
+    
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on',
+    
   },
 
   /* Configure projects for major browsers */
+
   projects: [
+    // Setup project
+    
+    { name: "setup", testMatch: /.*\.setup\.ts/ },
+    
+
     {
+      
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        // Use prepared auth state.
+        storageState: 'playwright/.auth/user.json',
+      },
+      dependencies: ['setup'],
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: {
+        ...devices['Desktop Firefox'],
+        // Use prepared auth state.
+        // storageState: 'playwright/.auth/user.json',
+      },
+      dependencies: ['setup'],
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: { 
+        ...devices['Desktop Safari'],
+        // storageState: 'playwright/.auth/user.json', 
     },
+    // dependencies: ['setup'],
+
+    },
+ 
 
     /* Test against mobile viewports. */
     // {
