@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test';
 // Import POM
 import HomePage from '../../pages/web/home.page';
 
-import { faker } from '@faker-js/faker';
+// import { faker } from '@faker-js/faker';
 // or, if desiring a different locale
 // import { fakerDE as faker } from '@faker-js/faker';
 
@@ -25,15 +25,15 @@ test.describe('Home', ()=>{
     { 
            test(`Test - ${i}`,async()=>{
     
-        const randomName = faker.person.fullName(); 
-        const randomEmail = faker.internet.email(); 
-        const randomPhone = faker.phone.number();
-        const para = faker.lorem.paragraph(2);
+        // const randomName = faker.person.fullName(); 
+        // const randomEmail = faker.internet.email(); 
+        // const randomPhone = faker.phone.number();
+        // const para = faker.lorem.paragraph(2);
 
-        console.log(randomName)
-        console.log(randomEmail)
-        console.log(randomPhone)
-        console.log(para)
+        // console.log(randomName)
+        // console.log(randomEmail)
+        // console.log(randomPhone)
+        // console.log(para)
 
 
         // Access Header Compoent using homePage
