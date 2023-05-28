@@ -8,7 +8,7 @@ setup('authenticate', async ({ page }) => {
 // Login
 await page.goto('https://www.programsbuzz.com/user/login');
 await page.locator('input#edit-name').fill('tg.learn13');
-await page.locator('input#edit-pass').fill('1acgaihigo');
+await page.locator('input#edit-pass').fill('Test');
 await page.locator("input[value='Log in']").click();
   
   // Wait until the page receives the cookies.

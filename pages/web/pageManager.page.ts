@@ -1,22 +1,31 @@
-import {Page, Locator} from '@playwright/test';
+import {Page} from '@playwright/test';
 // Import Component
 import HeaderComponent from './component/header.component'
+import LoginPage from './login.page'
+import HomePage from './home.page'
 
-
-class LoginPage 
+class PageManger 
 {
    private page: Page;
-   loginBtn: Locator;
     
    constructor(page: Page)
    {
       this.page = page;
-      this.loginBtn =  page.locator("text=Log In");
    }
     
    headerComponent()
    {
       return new HeaderComponent(this.page)
+   }
+
+   loginPage()
+   {
+      return new LoginPage(this.page)
+   }
+
+   homePage()
+   {
+      return new HomePage(this.page)
    }
 
    async navigate()
@@ -25,4 +34,4 @@ class LoginPage
    }
 }
 
-export default LoginPage;
+export default PageManger;
